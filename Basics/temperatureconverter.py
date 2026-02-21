@@ -1,14 +1,10 @@
 def ftoc(f):
     c = (f - 32) / (9/5)
     print(f,'Fahrenheit =', c, 'Celsius')
-    print('------------------------------')
-    return c
 
 def ctof(c):
     f = (c * (9 / 5)) + 32
     print(c, 'Celsius =', f, 'Fahrenheit')
-    print('------------------------------')
-    return f
 
 def tempConvert():
     print('Welcome to my temperature converter.')
