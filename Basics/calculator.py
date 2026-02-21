@@ -1,22 +1,26 @@
 def add(a, b):
     result = a + b
-    print(result)
+    return result
 
 def sub(a, b):
     result = a - b
-    print(result)
+    return result
 
 def mul(a, b):
     result = a * b
-    print(result)
+    return result
 
 def div(a, b):
+    if a == 0:
+        return False
+    if b == 0:
+        return False
     result = a / b
-    print(result)
+    return result
 
 def mod(a, b):
     result = a % b
-    print(result)
+    return result
 
 
 
@@ -33,22 +37,27 @@ def calculator():
 
         num1 = float(num1)
 
-        num2 = input('Please inser your second number: ')
+        num2 = input('Please insert your second number: ')
         if num2.lower() == 'exit':
             break
 
         num2 = float(num2)
 
         if op == '+':
-            add(num1, num2)
+            result = add(num1, num2)
+            print(result)
         elif op == '-':
-            sub(num1, num2)
+            result = sub(num1, num2)
+            print(result)
         elif op == '*':
-            mul(num1, num2)
+            result = mul(num1, num2)
+            print(result)
         elif op == '/':
-            div(num1, num2)
+            result = div(num1, num2)
+            print(result)
         elif op == '%':
-            mod(num1, num2)
+            result = mod(num1, num2)
+            print(result)
         else:
             print('Invalid operator')
             continue
