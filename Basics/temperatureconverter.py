@@ -1,10 +1,10 @@
 def ftoc(f):
     c = (f - 32) / (9/5)
-    print(f,'Fahrenheit =', c, 'Celsius')
+    return c
 
 def ctof(c):
     f = (c * (9 / 5)) + 32
-    print(c, 'Celsius =', f, 'Fahrenheit')
+    return f 
 
 def tempConvert():
     print('Welcome to my temperature converter.')
@@ -21,9 +21,12 @@ def tempConvert():
         numbers = float(numbers)
 
         if choice.lower() == 'f':
-            ftoc(numbers)
+            result = ftoc(numbers)
+            print(numbers,'Fahrenheit =', result, 'Celsius')
+            
         elif choice.lower() == 'c':
-            ctof(numbers)
+            result = ctof(numbers)
+            print(numbers, 'Celsius =', result, 'Fahrenheit')
         else:
             print('Invalid choice.')
             continue
