@@ -22,8 +22,7 @@ def mod(a, b):
 
 print('Welcome to my Calculator.')
 def calculator():
-    my_calculator = True
-    while my_calculator == True:
+    while True:
         print('Type "exit" to exit')
         op = input('Please insert your operation (+, -, *, /, %): ')
         if op == 'exit':
