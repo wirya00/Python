@@ -1,65 +1,68 @@
 def add(a, b):
-    result = a + b
-    return result
+    return a + b
 
 def sub(a, b):
-    result = a - b
-    return result
+    return a - b
 
 def mul(a, b):
-    result = a * b
-    return result
+    return a * b
 
 def div(a, b):
-    if a == 0:
-        return False
     if b == 0:
-        return False
-    result = a / b
-    return result
+        return "Error: Division by zero"
+    return a / b
 
 def mod(a, b):
-    result = a % b
-    return result
+    if b == 0:
+        return "Error: Modulus by zero"
+    return a % b
 
 
+operations = {
+    "+": add,
+    "-": sub,
+    "*": mul,
+    "/": div,
+    "%": mod
+}
 
-print('Welcome to my Calculator.')
+
+def get_number(prompt):
+    while True:
+        value = input(prompt)
+        if value.lower() == "exit":
+            return "exit"
+        try:
+            return float(value)
+        except ValueError:
+            print("Only numbers.")
+
+
 def calculator():
+    print("Welcome to my Calculator.")
+    
     while True:
         print('Type "exit" to exit')
-        op = input('Please insert your operation (+, -, *, /, %): ')
-        if op == 'exit':
+        op = input("Insert operation (+, -, *, /, %): ")
+        
+        if op == "exit":
             break
-        num1 = input('Please insert your first number: ')
-        if num1.lower() == 'exit':
-            break
-
-        num1 = float(num1)
-
-        num2 = input('Please insert your second number: ')
-        if num2.lower() == 'exit':
-            break
-
-        num2 = float(num2)
-
-        if op == '+':
-            result = add(num1, num2)
-            print(result)
-        elif op == '-':
-            result = sub(num1, num2)
-            print(result)
-        elif op == '*':
-            result = mul(num1, num2)
-            print(result)
-        elif op == '/':
-            result = div(num1, num2)
-            print(result)
-        elif op == '%':
-            result = mod(num1, num2)
-            print(result)
-        else:
-            print('Invalid operator')
+        
+        if op not in operations:
+            print("Invalid operator")
             continue
+        
+        num1 = get_number("Insert first number: ")
+        if num1 == "exit":
+            break
+        
+        num2 = get_number("Insert second number: ")
+        if num2 == "exit":
+            break
 
-calculator()
+        result = operations[op](num1, num2)
+        print("Result:", result)
+
+
+if __name__ == "__main__":
+    calculator()
