@@ -9,12 +9,12 @@ def mul(a, b):
 
 def div(a, b):
     if b == 0:
-        return "Error: Division by zero"
+        raise ZeroDivisionError("Error: Division by zero")
     return a / b
 
 def mod(a, b):
     if b == 0:
-        return "Error: Modulus by zero"
+        raise ZeroDivisionError("Error: Modulus by zero")
     return a % b
 
 
@@ -60,8 +60,11 @@ def calculator():
         if num2 == "exit":
             break
 
-        result = operations[op](num1, num2)
-        print("Result:", result)
+        try:
+            result = operations[op](num1, num2)
+            print("Result:", result)
+        except ZeroDivisionError as e:
+            print(e)
 
 
 if __name__ == "__main__":
