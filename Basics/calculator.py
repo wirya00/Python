@@ -1,3 +1,10 @@
+from datetime import datetime
+
+def error_log(message):
+    timestamp = datetime.now().strftime('[%d-%m-%Y %H:%M:%S]')
+    with open('Python Basics\Error.log', 'a') as file:
+        file.write(f'{timestamp} {message}\n')
+
 def add(a, b):
     return a + b
 
@@ -9,11 +16,13 @@ def mul(a, b):
 
 def div(a, b):
     if b == 0:
+        error_log('Error: Division by zero')
         raise ZeroDivisionError("Error: Division by zero")
     return a / b
 
 def mod(a, b):
     if b == 0:
+        error_log('Error: Modulus by zero')
         raise ZeroDivisionError("Error: Modulus by zero")
     return a % b
 
@@ -65,6 +74,8 @@ def calculator():
             print("Result:", result)
         except ZeroDivisionError as e:
             print(e)
+        finally:
+            print('Thank you for using my calculator.')
 
 
 if __name__ == "__main__":
